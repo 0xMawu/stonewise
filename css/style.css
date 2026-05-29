@@ -359,7 +359,7 @@
    }
    .intro__stat-row {
      display: flex; grid-template-columns: repeat(3,1fr);
-     gap: 24px; margin-top: 40px; padding-top: 20px;
+     gap: 24px; margin-top: 0px; padding-top: 0px;
      border-top: 1px solid rgba(200,169,110,0.18);
    }
    .intro__stat h3 {
@@ -986,7 +986,6 @@
    /* ── RESPONSIVE ─────────────────────────────────────────────── */
    @media (max-width: 1024px) {
     /* services__grid is visible at all sizes — scroll track handles mobile */
-    
     }
 
 
@@ -1143,7 +1142,7 @@
      .timeline-year { text-align: left; padding-right: 0; }
      .process-grid { grid-template-columns: 1fr 1fr; }
      .project-hero__meta { gap: 20px; }
-     .intro__stat-row { grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 1rem}
+     /* .intro__stat-row { grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 1rem} */
      /* .services is now always visible — scroll track handles mobile layout */
    }
    @media (max-width: 480px) {
@@ -1206,5 +1205,31 @@
       padding: 20px;
       border: 1px solid rgba(200,169,110,0.1);
       box-shadow: var(--shadow-sm);
-    }
+   
+   }
+
+   .intro__stat-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    margin-top: 0px;
+  }
+
+  /* Distributes spacing equally so items don't squeeze out of view */
+  .intro__stat {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
+  /* Gently scales down numbers so they fit on single lines on tiny screens */
+  .intro__stat h3 {
+    font-size: 1.6rem !important;
+  }
+
+  .intro__stat p {
+    font-size: 0.7rem !important;
+    line-height: 1.3;
+  }
   }
