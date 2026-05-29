@@ -68,6 +68,85 @@
 
 <section class="section" style="background:var(--offwhite);">
   <div class="container">
+    <div class="reveal reveal-delay-1">
+      <div class="contact-form-wrap">
+        <span class="section-eyebrow">Free Consultation</span>
+        <h3 style="font-family:var(--font-display);font-size:2rem;color:var(--charcoal);margin:8px 0 32px;">Tell Us About Your Ghana Project</h3>
+        <form id="contact-form" novalidate data-endpoint="https://formspree.io/f/mjgzlovn">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone / WhatsApp Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+44 / +1 / +49 …" />
+            </div>
+            <div class="form-field">
+              <label for="country">Country You're Based In</label>
+              <select id="country" name="country">
+                <option value="" disabled selected>Select your country…</option>
+                <option value="uk">United Kingdom</option>
+                <option value="usa">United States</option>
+                <option value="canada">Canada</option>
+                <option value="germany">Germany</option>
+                <option value="netherlands">Netherlands</option>
+                <option value="australia">Australia</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-field form-grid--full">
+              <label for="service">What Would You Like to Build? *</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a project type…</option>
+                <option value="residential">Family Home / Residence</option>
+                <option value="commercial">Rental / Commercial Property</option>
+                <option value="condominium">Condominium / Multi-Unit</option>
+                <option value="lodge">Lodge / Hospitality</option>
+                <option value="renovation">Renovation of Existing Property</option>
+                <option value="project-management">Remote Project Management Only</option>
+                <option value="other">Not Sure Yet — Need Guidance</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="budget">Approximate Budget</label>
+              <select id="budget" name="budget">
+                <option value="" disabled selected>Select a range…</option>
+                <option value="under-500k">Under GH₵ 500,000</option>
+                <option value="500k-2m">GH₵ 500,000 – 2 Million</option>
+                <option value="2m-10m">GH₵ 2 Million – 10 Million</option>
+                <option value="10m-50m">GH₵ 10 Million – 50 Million</option>
+                <option value="over-50m">Over GH₵ 50 Million</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="timeline">When Do You Hope to Start?</label>
+              <select id="timeline" name="timeline">
+                <option value="" disabled selected>Select timeline…</option>
+                <option value="asap">As soon as possible</option>
+                <option value="1-3months">Within 1–3 months</option>
+                <option value="3-6months">Within 3–6 months</option>
+                <option value="6-12months">Within 6–12 months</option>
+                <option value="over-12months">More than 12 months away</option>
+              </select>
+            </div>
+            <div class="form-field form-grid--full">
+              <label for="message">Tell Us About Your Project *</label>
+              <textarea id="message" name="message" placeholder="Tell us where in Ghana, what you'd like to build, whether you have land, your design ideas, and any concerns you have. The more you share, the better we can help." required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--gold" style="margin-top:28px;width:100%;justify-content:center;padding:18px;">
+            <span>Send My Enquiry</span>
+          </button>
+          <p style="font-size:0.78rem;color:var(--stone);margin-top:12px;text-align:center;">We respond within 24 hours and will propose a video call at a time that suits your timezone.</p>
+          <div id="form-message"></div>
+        </form>
+      </div>
+    </div>
     <div class="contact-layout">
 
       <!-- Info Panel -->
@@ -113,105 +192,25 @@
 
         <div class="contact-info__item">
           <div>
-            <div class="contact-info__label" style="margin-bottom:16px;">We Accommodate Your Timezone</div>
-            <div class="contact-info__value" style="font-size:0.88rem;line-height:1.8;">
+            <!-- <div class="contact-info__label" style="margin-bottom:16px;">We Accommodate Your Timezone</div> -->
+            <!-- <div class="contact-info__value" style="font-size:0.88rem;line-height:1.8;">
               🇬🇧 UK / Europe: Evening calls available<br>
               🇺🇸 US / Canada: Early morning Ghana time<br>
               🇦🇺 Australia: Weekends by arrangement<br>
               <span style="color:var(--stone);font-size:0.8rem;margin-top:6px;display:block;">Just tell us where you are and we'll find a time.</span>
-            </div>
+            </div> -->
             <div style="margin-top:20px;">
-              <div class="contact-info__label" style="margin-bottom:16px;">Follow Us</div>
+              <!-- <div class="contact-info__label" style="margin-bottom:16px;">Follow Us</div>
               <div class="footer__social" style="justify-content:flex-start;">
                 <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="#000000"/></svg></a>
                 <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="#000000"/><circle cx="12" cy="12" r="4"/></svg></a>
                 <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" fill="#000000"/><circle cx="4" cy="4" r="2"/></svg></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <div class="reveal reveal-delay-1">
-        <div class="contact-form-wrap">
-          <span class="section-eyebrow">Free Consultation</span>
-          <h3 style="font-family:var(--font-display);font-size:2rem;color:var(--charcoal);margin:8px 0 32px;">Tell Us About Your Ghana Project</h3>
-          <form id="contact-form" novalidate data-endpoint="https://formspree.io/f/mjgzlovn">
-            <div class="form-grid">
-              <div class="form-field">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" placeholder="Your full name" required />
-              </div>
-              <div class="form-field">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required />
-              </div>
-              <div class="form-field">
-                <label for="phone">Phone / WhatsApp Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+44 / +1 / +49 …" />
-              </div>
-              <div class="form-field">
-                <label for="country">Country You're Based In</label>
-                <select id="country" name="country">
-                  <option value="" disabled selected>Select your country…</option>
-                  <option value="uk">United Kingdom</option>
-                  <option value="usa">United States</option>
-                  <option value="canada">Canada</option>
-                  <option value="germany">Germany</option>
-                  <option value="netherlands">Netherlands</option>
-                  <option value="australia">Australia</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-field form-grid--full">
-                <label for="service">What Would You Like to Build? *</label>
-                <select id="service" name="service" required>
-                  <option value="" disabled selected>Select a project type…</option>
-                  <option value="residential">Family Home / Residence</option>
-                  <option value="commercial">Rental / Commercial Property</option>
-                  <option value="condominium">Condominium / Multi-Unit</option>
-                  <option value="lodge">Lodge / Hospitality</option>
-                  <option value="renovation">Renovation of Existing Property</option>
-                  <option value="project-management">Remote Project Management Only</option>
-                  <option value="other">Not Sure Yet — Need Guidance</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="budget">Approximate Budget</label>
-                <select id="budget" name="budget">
-                  <option value="" disabled selected>Select a range…</option>
-                  <option value="under-500k">Under GH₵ 500,000</option>
-                  <option value="500k-2m">GH₵ 500,000 – 2 Million</option>
-                  <option value="2m-10m">GH₵ 2 Million – 10 Million</option>
-                  <option value="10m-50m">GH₵ 10 Million – 50 Million</option>
-                  <option value="over-50m">Over GH₵ 50 Million</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="timeline">When Do You Hope to Start?</label>
-                <select id="timeline" name="timeline">
-                  <option value="" disabled selected>Select timeline…</option>
-                  <option value="asap">As soon as possible</option>
-                  <option value="1-3months">Within 1–3 months</option>
-                  <option value="3-6months">Within 3–6 months</option>
-                  <option value="6-12months">Within 6–12 months</option>
-                  <option value="over-12months">More than 12 months away</option>
-                </select>
-              </div>
-              <div class="form-field form-grid--full">
-                <label for="message">Tell Us About Your Project *</label>
-                <textarea id="message" name="message" placeholder="Tell us where in Ghana, what you'd like to build, whether you have land, your design ideas, and any concerns you have. The more you share, the better we can help." required></textarea>
-              </div>
-            </div>
-            <button type="submit" class="btn btn--gold" style="margin-top:28px;width:100%;justify-content:center;padding:18px;">
-              <span>Send My Enquiry</span>
-            </button>
-            <p style="font-size:0.78rem;color:var(--stone);margin-top:12px;text-align:center;">We respond within 24 hours and will propose a video call at a time that suits your timezone.</p>
-            <div id="form-message"></div>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
 </section>
