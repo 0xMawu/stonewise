@@ -306,6 +306,109 @@
       }, { passive: true });
     }
   
+    /* ---------- Auto-Scroll Tracks — reading-speed snap ---------- */
+    /**
+     * For every horizontal scroll track on mobile the carousel advances
+     * one card at a time. The dwell time on each card is calculated from
+     * its word count at 200 wpm (average comfortable reading pace) with a
+     * 1.5 s minimum and a 6 s maximum. After the last card it reverses.
+     * Pauses while the user is touching / hovering; resumes 3 s after.
+     *
+     * Tracks covered:
+     *   .why-us__scroll-track   → .why-us__item cards
+     *   .services__scroll-track → .service-card cards
+     *   .projects__scroll-track → .project-card cards
+     *   .process-scroll-track   → .process-step cards
+     */
+    (function initReadingScrollTracks() {
+      const WPM         = 200;
+      const MIN_DWELL   = 1500;   // ms
+      const MAX_DWELL   = 6000;   // ms
+      const SNAP_MS     = 500;    // smooth-scroll animation budget
+      const PAUSE_AFTER = 3000;   // ms after user interaction before resuming
+
+      const TRACKS = [
+        { track: '.why-us__scroll-track',   cards: '.why-us__item'  },
+        { track: '.services__scroll-track', cards: '.service-card'  },
+        { track: '.projects__scroll-track', cards: '.project-card'  },
+        { track: '.process-scroll-track',   cards: '.process-step'  },
+      ];
+
+      function wordsIn(el) {
+        return (el.innerText || el.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      }
+      function dwellFor(words) {
+        return Math.min(MAX_DWELL, Math.max(MIN_DWELL, (words / WPM) * 60 * 1000));
+      }
+      function smoothScrollTo(el, left) {
+        // Use scrollTo with behaviour when supported, otherwise jump
+        try { el.scrollTo({ left, behavior: 'smooth' }); }
+        catch (_) { el.scrollLeft = left; }
+      }
+
+      TRACKS.forEach(({ track: trackSel, cards: cardSel }) => {
+        const track = document.querySelector(trackSel);
+        if (!track) return;
+
+        let paused    = false;
+        let pauseTimer;
+        let timeoutId;
+        let index     = 0;
+        let direction = 1;   // 1 = forward, -1 = backward
+
+        function getCards() {
+          return [...track.querySelectorAll(cardSel)];
+        }
+
+        function advance() {
+          // Only run when there's actual horizontal overflow (i.e. on mobile)
+          if (track.scrollWidth <= track.clientWidth + 4) {
+            timeoutId = setTimeout(advance, 1000);
+            return;
+          }
+          if (paused) { timeoutId = setTimeout(advance, 200); return; }
+
+          const cards = getCards();
+          if (!cards.length) return;
+
+          index += direction;
+
+          // Reverse at ends
+          if (index >= cards.length) { index = cards.length - 2; direction = -1; }
+          if (index < 0)             { index = 1;                 direction =  1; }
+          index = Math.max(0, Math.min(index, cards.length - 1));
+
+          // Scroll so the target card's left edge aligns with the track's left edge
+          const card       = cards[index];
+          const targetLeft = card.offsetLeft - track.offsetLeft - parseInt(getComputedStyle(track).paddingLeft || 0);
+          smoothScrollTo(track, Math.max(0, targetLeft));
+
+          // Dwell = time to read this card
+          const dwell = dwellFor(wordsIn(card)) + SNAP_MS;
+          timeoutId = setTimeout(advance, dwell);
+        }
+
+        function pause() {
+          paused = true;
+          clearTimeout(pauseTimer);
+        }
+        function resume() {
+          clearTimeout(pauseTimer);
+          pauseTimer = setTimeout(() => { paused = false; }, PAUSE_AFTER);
+        }
+
+        track.addEventListener('touchstart',  pause,  { passive: true });
+        track.addEventListener('touchend',    resume, { passive: true });
+        track.addEventListener('pointerdown', pause,  { passive: true });
+        track.addEventListener('pointerup',   resume, { passive: true });
+        track.addEventListener('mouseenter',  pause,  { passive: true });
+        track.addEventListener('mouseleave',  resume, { passive: true });
+
+        // Start after a short delay so layout has settled
+        timeoutId = setTimeout(advance, 1800);
+      });
+    })();
+
     /* ---------- Project Filter (projects.html) ---------- */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projCards  = document.querySelectorAll('.project-card[data-category]');

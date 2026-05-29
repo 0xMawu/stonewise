@@ -70,6 +70,7 @@
      margin-top: 1rem;
 
    }
+
    
    .section-header__divider {
      width: 48px;
@@ -966,12 +967,27 @@
    #back-to-top:hover { background: var(--charcoal); color: var(--gold); }
    #back-to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
    
+   /* ── HORIZONTAL SCROLL TRACKS ──────────────────────────────── */
+   /*
+    * These wrappers clip + scroll their inner grid horizontally on mobile.
+    * On desktop the inner grid lays out normally (no scroll needed).
+    * Each track follows the same testimonials__track / testimonials__slider pattern.
+    */
+
+   /* --- Shared scroll-track shell (overflow clip) --- */
+   .services__scroll-track,
+   .projects__scroll-track,
+   .why-us__scroll-track,
+   .process-scroll-track {
+     /* Desktop: plain block so the inner grid displays normally */
+     width: 100%;
+   }
+
    /* ── RESPONSIVE ─────────────────────────────────────────────── */
    @media (max-width: 1024px) {
-    .services__grid, .p {
-      display: none;
+    /* services__grid is visible at all sizes — scroll track handles mobile */
+    
     }
-  }
 
 
    @media (max-width: 1100px) {
@@ -1002,7 +1018,8 @@
      .header__nav-left, .header__nav-right { display: none; }
      .header__inner { grid-template-columns: 1fr auto 1fr; }
      .header__hamburger { display: flex; }
-     .services__grid, .values__grid, .projects__grid, .all-projects__grid { grid-template-columns: 1fr; }
+     .values__grid, .all-projects__grid { grid-template-columns: 1fr; }
+     /* services__grid and projects__grid are handled by scroll-track flex above */
      .team__grid { grid-template-columns: 1fr 1fr; }
      /* Footer compact horizontal strip */
      #site-footer { padding: 18px 0 0; }
@@ -1032,6 +1049,88 @@
      /* Hide decorative accent to prevent horizontal overflow */
      .intro__img-accent { display: none; }
      .testimonial-card { min-width: calc(100vw - 48px); }
+
+     /* Fade-edge scroll hint — shows content continues beyond screen */
+     .services__scroll-track,
+     .projects__scroll-track,
+     .why-us__scroll-track,
+     .process-scroll-track {
+       position: relative;
+     }
+
+     /* ── Horizontal scroll tracks on mobile ── */
+     .services__scroll-track,
+     .projects__scroll-track,
+     .why-us__scroll-track,
+     .process-scroll-track {
+       overflow-x: auto;
+       overflow-y: visible;
+       -webkit-overflow-scrolling: touch;
+       scrollbar-width: none;          /* Firefox */
+       padding-bottom: 16px;           /* room for momentum scroll */
+       margin: 0 -8px;                 /* bleed to edge on mobile */
+       padding-left: 8px;
+     }
+     .services__scroll-track::-webkit-scrollbar,
+     .projects__scroll-track::-webkit-scrollbar,
+     .why-us__scroll-track::-webkit-scrollbar,
+     .process-scroll-track::-webkit-scrollbar { display: none; }
+
+     /* Services cards — horizontal row */
+     .services__scroll-track .services__grid {
+       display: flex !important;
+       flex-direction: row;
+       flex-wrap: nowrap;
+       gap: 12px;
+       width: max-content;
+       margin-top: 0;
+     }
+     .services__scroll-track .service-card {
+       width: 72vw;
+       max-width: 280px;
+       flex-shrink: 0;
+     }
+
+     /* Project cards — horizontal row */
+     .projects__scroll-track .projects__grid {
+       display: flex !important;
+       flex-direction: row;
+       flex-wrap: nowrap;
+       gap: 10px;
+       width: max-content;
+     }
+     .projects__scroll-track .project-card,
+     .projects__scroll-track .project-card--tall,
+     .projects__scroll-track .project-card--wide {
+       width: 72vw;
+       max-width: 300px;
+       flex-shrink: 0;
+       grid-row: unset;
+       grid-column: unset;
+     }
+     .projects__scroll-track .project-card__media,
+     .projects__scroll-track .project-card--tall .project-card__media,
+     .projects__scroll-track .project-card--wide .project-card__media {
+       min-height: 240px;
+       height: 240px;
+     }
+
+
+     /* Process / How It Works steps — horizontal row */
+     .process-scroll-track .process-grid {
+       display: flex !important;
+       flex-direction: row;
+       flex-wrap: nowrap;
+       gap: 12px;
+       width: max-content;
+       margin-top: 0;
+     }
+     .process-scroll-track .process-grid::before { display: none; }
+     .process-scroll-track .process-step {
+       width: 64vw;
+       max-width: 240px;
+       flex-shrink: 0;
+     }
      .gallery-grid, .video-grid { grid-template-columns: 1fr; }
      .gallery-item img, .gallery-item--wide img, .gallery-item--tall img { height: 240px; }
      .gallery-item--wide, .gallery-item--tall { grid-column: span 1; grid-row: span 1; }
@@ -1045,7 +1144,7 @@
      .process-grid { grid-template-columns: 1fr 1fr; }
      .project-hero__meta { gap: 20px; }
      .intro__stat-row { grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 1rem}
-     .services{display: none;}
+     /* .services is now always visible — scroll track handles mobile layout */
    }
    @media (max-width: 480px) {
      .container, .container--narrow { padding: 0 8px; }
@@ -1054,7 +1153,58 @@
      .team__grid { grid-template-columns: 1fr; }
      .intro__stat-row { grid-template-columns: 1fr; }
      .process-grid { grid-template-columns: 1fr; }
-     .services__grid {
-      display: flex; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px;
-    }
    }
+
+
+   /* ==========================================================================
+   DIASPORA HORIZONTAL SCROLL TRACK (MOBILE OVERRIDES)
+   ========================================================================== */
+
+   @media (max-width: 768px) {
+    /* 1. Prevent the grid parent from compressing layouts */
+    .why-us__grid { 
+      display: block; 
+      overflow: hidden; 
+    }
+    
+    /* 2. Configure the new track to allow sideways swiping */
+    .why-us__scroll-track {
+      display: block;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;               /* Hides scrollbar on Firefox */
+      -webkit-overflow-scrolling: touch;   /* Smooth scrolling physics for iPhone/Safari */
+      margin-top: 32px;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+    
+    /* Hides scrollbars on Chrome, Safari, and Opera */
+    .why-us__scroll-track::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* 3. Force your list to stay on a single horizontal row */
+    .why-us__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 20px;
+      width: max-content;
+      padding-right: 20px;
+      margin-top: 0;
+    }
+    
+    /* 4. Ensure each individual feature card card behaves nicely as a slide */
+    .why-us__item {
+      width: 290px;
+      max-width: 80vw;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      background: var(--white);
+      padding: 20px;
+      border: 1px solid rgba(200,169,110,0.1);
+      box-shadow: var(--shadow-sm);
+    }
+  }
