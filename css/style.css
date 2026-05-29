@@ -408,7 +408,7 @@
    .projects__grid {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     gap: 3px;
+     gap: 32px;
    }
    .project-card {
      position: relative; overflow: hidden; cursor: pointer;
@@ -1160,6 +1160,7 @@
    ========================================================================== */
 
    @media (max-width: 768px) {
+  
     /* 1. Prevent the grid parent from compressing layouts */
     .why-us__grid { 
       display: block; 
@@ -1232,4 +1233,51 @@
     font-size: 0.7rem !important;
     line-height: 1.3;
   }
+
+  /* ==========================================================================
+   PROJECTS PAGE PORTFOLIO HORIZONTAL TOUCH SCROLL (MOBILE OVERRIDES)
+   ========================================================================== */
+  
+  /* 1. Allow the container to overflow cleanly without breaking screen boundaries */
+  .projects-portfolio .container {
+    overflow: hidden;
+    padding-right: 0; /* Lets the cards bleed beautifully to the right edge */
   }
+
+  /* 2. Configure the window track to handle sideways touch/swipe scrolling */
+  .projects__scroll-track {
+    display: block !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;               /* Hides standard scrollbar on Firefox */
+    -webkit-overflow-scrolling: touch;   /* Smooth iOS touch scroll physics */
+    margin-top: 32px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  /* Hides scrollbars on Chrome, Safari, and Opera */
+  .projects__scroll-track::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* 3. Re-arrange the vertical grid layout into a single row that doesn't wrap */
+  .projects__grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 20px !important;
+    width: max-content !important;
+    margin-top: 0 !important;
+    padding-right: 20px; /* Soft edge spacing at the end of the line */
+  }
+
+  /* 4. Force individual cards to size up as uniform mobile slides */
+  .project-card {
+    width: 300px !important;
+    max-width: 82vw !important;
+    scroll-snap-align: start;
+    flex-shrink: 0 !important; /* Prevents layout cards from squeezing smaller */
+  }
+}
