@@ -483,14 +483,27 @@
    .why-us__item p  { font-size: 0.9rem; }
    
    /* ── TESTIMONIALS ──────────────────────────────────────────── */
-   .testimonials { background: var(--white); }
-   .testimonials__track { overflow: hidden; margin-top: 48px; }
-   .testimonials__slider {
-     display: flex; gap: 32px; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+   .testimonials { background: var(--white); width: 100%; }
+
+   .testimonials__track { 
+     overflow: hidden; 
+     margin-top: 48px; 
+     width: 100%; /* Ensure track takes full width */
    }
+   
+   .testimonials__slider {
+     display: flex; 
+     gap: 32px; 
+     transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+     width: max-content; /* Allows the slider to hold all cards side-by-side */
+   }
+   
    .testimonial-card {
-     min-width: 500px; background: var(--offwhite);
-     padding: 22px 20px; border-left: 2px solid var(--gold);
+     width: 500px; /* Changed from min-width to fixed width */
+     max-width: 85vw; /* Prevents overflow on smaller screens */
+     background: var(--offwhite);
+     padding: 22px 20px; 
+     border-left: 2px solid var(--gold);
      flex-shrink: 0;
    }
    .testimonial-card__text {
