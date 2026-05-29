@@ -6,57 +6,138 @@
 
 /* ── ABOUT PAGE ─────────────────────────────────────────────── */
 
-/* Timeline */
-.timeline { position:relative; padding:60px 0; }
-.timeline::before {
-  content:''; position:absolute; left:50%; top:0; bottom:0;
-  width:1px; background:rgba(200,169,110,0.2); transform:translateX(-50%);
-}
-.timeline-item { display:flex; gap:64px; align-items:flex-start; margin-bottom:72px; }
-.timeline-item:nth-child(even) { flex-direction:row-reverse; }
-.timeline-item__body { flex:1; }
-.timeline-item__year {
-  flex:0 0 auto; width:80px; height:80px; border-radius:50%;
-  border:1px solid var(--gold); display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display); font-size:1rem; color:var(--gold);
-  position:relative; z-index:1; background:var(--offwhite);
-}
-.timeline-item__body h4 { font-family:var(--font-display); font-size:1.5rem; margin-bottom:8px; color:var(--charcoal); }
-.timeline-item__body p  { color:var(--stone); line-height:1.7; }
-@media (max-width:768px) {
-  .timeline::before { left:32px; }
-  .timeline-item,
-  .timeline-item:nth-child(even) { flex-direction:column; gap:20px; padding-left:80px; }
-  .timeline-item__year { position:absolute; left:0; }
-  .timeline-item { position:relative; }
+/* ── HORIZONTAL SCROLL CAROUSEL (shared) ────────────────────── */
+
+.scroll-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-/* Team Grid */
-.team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
-@media (max-width:1024px) { .team-grid { grid-template-columns:repeat(2,1fr); } }
-@media (max-width:540px)  { .team-grid { grid-template-columns:1fr; } }
-.team-card { text-align:center; }
+.scroll-track-wrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+  cursor: grab;
+}
+.scroll-track:active { cursor: grabbing; }
+.scroll-track::-webkit-scrollbar { height: 4px; }
+.scroll-track::-webkit-scrollbar-track { background: rgba(200,169,110,0.08); border-radius: 2px; }
+.scroll-track::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.35); border-radius: 2px; }
+.scroll-track::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+.scroll-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* Arrow buttons */
+.scroll-btn {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,169,110,0.35);
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.scroll-btn svg {
+  width: 18px; height: 18px;
+  stroke: var(--gold); fill: none; stroke-width: 2;
+}
+.scroll-btn:hover { background: rgba(200,169,110,0.12); border-color: var(--gold); }
+.scroll-btn:disabled { opacity: 0.25; pointer-events: none; }
+
+/* Dot indicators */
+.scroll-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 28px;
+}
+.scroll-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(200,169,110,0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+.scroll-dot.active {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+/* ── TIMELINE CARDS (horizontal scroll) ─────────────────────── */
+
+.timeline-scroll-card {
+  width: 340px;
+  padding: 40px 36px;
+  background: var(--white);
+  border-top: 3px solid var(--gold);
+  position: relative;
+}
+.timeline-scroll-card__year {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: rgba(200,169,110,0.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.timeline-scroll-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.timeline-scroll-card p { color: var(--stone); line-height: 1.7; font-size: 0.95rem; }
+
+@media (max-width: 768px) { .timeline-scroll-card { width: 280px; } }
+@media (max-width: 480px) { .timeline-scroll-card { width: calc(100vw - 120px); } }
+
+/* ── TEAM CARDS (horizontal scroll) ─────────────────────────── */
+
+.team-card { text-align: center; }
+.team-card--scroll { width: 280px; }
 .team-card__img-wrap {
-  aspect-ratio:3/4; overflow:hidden; margin-bottom:20px;
-  position:relative;
+  aspect-ratio: 3/4; overflow: hidden; margin-bottom: 20px;
+  position: relative;
 }
-.team-card__img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
-.team-card:hover .team-card__img-wrap img { transform:scale(1.04); }
+.team-card__img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.team-card:hover .team-card__img-wrap img { transform: scale(1.04); }
 .team-card__img-wrap::after {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(18,18,18,0.5) 0%, transparent 50%);
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(18,18,18,0.5) 0%, transparent 50%);
 }
-.team-card__name { font-family:var(--font-display); font-size:1.3rem; color:var(--charcoal); }
-.team-card__role { font-size:0.71rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-top:4px; }
+.team-card__name { font-family: var(--font-display); font-size: 1.3rem; color: var(--charcoal); }
+.team-card__role { font-size: 0.71rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
 
-/* Values */
-.values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-@media (max-width:900px) { .values-grid { grid-template-columns:1fr; } }
-.value-card {
-  padding:56px 48px; background:var(--charcoal); position:relative; overflow:hidden;
-  transition:background var(--transition);
+@media (max-width: 480px) { .team-card--scroll { width: calc(100vw - 120px); } }
+
+/* Values — scroll card sizing */
+.value-card.scroll-card {
+  width: 340px;
+  padding: 56px 48px;
+  background: var(--charcoal);
+  position: relative;
+  overflow: hidden;
+  transition: background var(--transition);
+  flex-shrink: 0;
 }
-.value-card:hover { background:#1e1c19; }
+.value-card.scroll-card:hover { background: #1e1c19; }
+@media (max-width: 768px) { .value-card.scroll-card { width: 290px; } }
+@media (max-width: 480px) { .value-card.scroll-card { width: calc(100vw - 120px); } }
 .value-card__num {
   font-family:var(--font-display); font-size:5rem; color:rgba(200,169,110,0.07);
   position:absolute; top:24px; right:32px; line-height:1; pointer-events:none;
@@ -267,7 +348,7 @@
 
 /* Service Detail Sections */
 .service-section {
-  padding:100px 0;
+  padding:0px 0;
   border-bottom:1px solid rgba(200,169,110,0.08);
 }
 .service-section:nth-child(even) { background:var(--white); }

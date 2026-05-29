@@ -64,14 +64,14 @@
     <h1 class="page-hero__title">Why We Started Stonewise</h1>
   </div>
 </div>
-<div style="height:var(--header-height)"></div>
+<!-- <div style="height:var(--header-height)"></div> -->
 
 <!-- INTRO -->
 <section class="section" style="background:var(--offwhite);">
   <div class="container">
     <div class="intro__grid">
       <div class="intro__img-wrap reveal">
-        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80" alt="Stonewise leadership" loading="lazy" />
+        <!-- <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80" alt="Stonewise leadership" loading="lazy" /> -->
         <div class="intro__img-accent"></div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -101,116 +101,128 @@
 </section>
 
 <!-- OUR VALUES -->
-<section class="section" style="padding:0;background:var(--black);">
+<section class="section scroll-section" style="padding:0;background:var(--black);overflow:hidden;">
   <div class="container" style="padding-top:80px;padding-bottom:0;">
     <div class="section-header section-header--center reveal">
       <span class="section-eyebrow">What Guides Us</span>
       <h2 style="color:var(--cream)">Our Core Values</h2>
       <div class="section-header__divider" style="margin:18px auto;"></div>
     </div>
-  </div>
-  <div class="values-grid reveal" style="margin-top:56px;">
-    <div class="value-card">
-      <div class="value-card__num">01</div>
-      <div class="value-card__icon">
-        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <div class="scroll-controls" style="margin-top:32px;">
+      <button class="scroll-btn scroll-btn--prev" data-target="values-track" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="scroll-track-wrap">
+        <div class="scroll-track" id="values-track">
+          <div class="value-card scroll-card">
+            <div class="value-card__num">01</div>
+            <div class="value-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <h4>Radical Honesty</h4>
+            <p>We tell you what is happening on your site — even when it's not good news. No cover-ups, no sugar-coating. You deserve the truth, and you'll always get it from us.</p>
+          </div>
+          <div class="value-card scroll-card">
+            <div class="value-card__num">02</div>
+            <div class="value-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h4>Eyes on Your Site, Every Day</h4>
+            <p>Your dedicated site team shows up whether you're watching or not. We operate as if you're standing beside us — because that is the standard our diaspora clients deserve.</p>
+          </div>
+          <div class="value-card scroll-card">
+            <div class="value-card__num">03</div>
+            <div class="value-card__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>Your Timeline is Sacred</h4>
+            <p>We know you've made plans around your build — flights home, family expectations, financial commitments. We treat your timeline as a promise, not a guideline.</p>
+          </div>
+          <div class="value-card scroll-card">
+            <div class="value-card__num">04</div>
+            <div class="value-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h4>Diaspora-First Communication</h4>
+            <p>We communicate on your schedule. Video calls at your convenience, WhatsApp updates, weekly written reports — in language you understand, not construction jargon.</p>
+          </div>
+          <div class="value-card scroll-card">
+            <div class="value-card__num">05</div>
+            <div class="value-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Quality That Lasts</h4>
+            <p>We build structures that stand for decades — because your Ghana home is not just a building, it's a legacy. Every beam, every finish, every detail matters.</p>
+          </div>
+          <div class="value-card scroll-card">
+            <div class="value-card__num">06</div>
+            <div class="value-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h4>Building Ghana's Future</h4>
+            <p>Every diaspora investment we help deliver strengthens Ghana's built environment, creates local jobs, and contributes to the communities our clients call home.</p>
+          </div>
+        </div>
       </div>
-      <h4>Radical Honesty</h4>
-      <p>We tell you what is happening on your site — even when it's not good news. No cover-ups, no sugar-coating. You deserve the truth, and you'll always get it from us.</p>
+      <button class="scroll-btn scroll-btn--next" data-target="values-track" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
-    <div class="value-card">
-      <div class="value-card__num">02</div>
-      <div class="value-card__icon">
-        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
-      <h4>Eyes on Your Site, Every Day</h4>
-      <p>Your dedicated site team shows up whether you're watching or not. We operate as if you're standing beside us — because that is the standard our diaspora clients deserve.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-card__num">03</div>
-      <div class="value-card__icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <h4>Your Timeline is Sacred</h4>
-      <p>We know you've made plans around your build — flights home, family expectations, financial commitments. We treat your timeline as a promise, not a guideline.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-card__num">04</div>
-      <div class="value-card__icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      </div>
-      <h4>Diaspora-First Communication</h4>
-      <p>We communicate on your schedule. Video calls at your convenience, WhatsApp updates, weekly written reports — in language you understand, not construction jargon.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-card__num">05</div>
-      <div class="value-card__icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <h4>Quality That Lasts</h4>
-      <p>We build structures that stand for decades — because your Ghana home is not just a building, it's a legacy. Every beam, every finish, every detail matters.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-card__num">06</div>
-      <div class="value-card__icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <h4>Building Ghana's Future</h4>
-      <p>Every diaspora investment we help deliver strengthens Ghana's built environment, creates local jobs, and contributes to the communities our clients call home.</p>
-    </div>
+    <div class="scroll-dots" id="values-dots" style="padding-bottom:64px;"></div>
   </div>
 </section>
 
 <!-- TIMELINE -->
-<section class="section" style="background:var(--offwhite);">
+<section class="section scroll-section" style="background:var(--offwhite);overflow:hidden;">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">Our Journey</span>
       <h2>How Stonewise Grew Into Ghana's Diaspora Builder</h2>
       <div class="section-header__divider"></div>
     </div>
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="timeline-item__year">2022</div>
-        <div class="timeline-item__body">
-          <h4>Founded with a Purpose</h4>
-          <p>Stonewise Construction is established in Accra with one core mission: to give Ghanaians abroad a contractor they can truly trust. Our first client — a nurse based in Manchester — receives the keys to her family home in Tema, built entirely while she managed the process remotely via weekly video calls.</p>
+    <div class="scroll-controls" style="margin-top:56px;">
+      <button class="scroll-btn scroll-btn--prev" data-target="timeline-track" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="scroll-track-wrap">
+        <div class="scroll-track" id="timeline-track">
+          <div class="timeline-scroll-card scroll-card">
+            <div class="timeline-scroll-card__year">2022</div>
+            <h4>Founded with a Purpose</h4>
+            <p>Stonewise Construction is established in Accra with one core mission: to give Ghanaians abroad a contractor they can truly trust. Our first client — a nurse based in Manchester — receives the keys to her family home in Tema, built entirely while she managed the process remotely via weekly video calls.</p>
+          </div>
+          <div class="timeline-scroll-card scroll-card">
+            <div class="timeline-scroll-card__year">2023</div>
+            <h4>The Diaspora Reporting System Launches</h4>
+            <p>We formalise our proprietary client reporting system — weekly structured updates with site photos, video walkthroughs, spend breakdowns, and milestone certifications. Clients across the UK, US, Canada, and Germany begin building with confidence they'd never had before.</p>
+          </div>
+          <div class="timeline-scroll-card scroll-card">
+            <div class="timeline-scroll-card__year">2023</div>
+            <h4>First Commercial Project</h4>
+            <p>A Ghanaian-American investor commissions us for a rental commercial complex in Airport Residential, Accra. Managed entirely remotely, it is delivered on time and becomes a flagship example of what trust-based diaspora construction looks like.</p>
+          </div>
+          <div class="timeline-scroll-card scroll-card">
+            <div class="timeline-scroll-card__year">2024</div>
+            <h4>Granite Heights — Our Flagship</h4>
+            <p>Completion of Granite Heights — a 12-storey, 120-unit luxury condominium tower in East Legon, valued at GH₵ 48 million. Several units were purchased by diaspora investors who never visited during construction, relying entirely on our reporting system for peace of mind.</p>
+          </div>
+          <div class="timeline-scroll-card scroll-card">
+            <div class="timeline-scroll-card__year">2025</div>
+            <h4>Growing the Team</h4>
+            <p>With a growing pipeline of diaspora commissions across Greater Accra, Ashanti, and the Eastern Region, we expand our team to 50+ professionals — including dedicated Diaspora Liaison Officers who speak the language of our clients' concerns and communicate across time zones.</p>
+          </div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__year">2023</div>
-        <div class="timeline-item__body">
-          <h4>The Diaspora Reporting System Launches</h4>
-          <p>We formalise our proprietary client reporting system — weekly structured updates with site photos, video walkthroughs, spend breakdowns, and milestone certifications. Clients across the UK, US, Canada, and Germany begin building with confidence they'd never had before.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__year">2023</div>
-        <div class="timeline-item__body">
-          <h4>First Commercial Project</h4>
-          <p>A Ghanaian-American investor commissions us for a rental commercial complex in Airport Residential, Accra. Managed entirely remotely, it is delivered on time and becomes a flagship example of what trust-based diaspora construction looks like.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__year">2024</div>
-        <div class="timeline-item__body">
-          <h4>Granite Heights — Our Flagship</h4>
-          <p>Completion of Granite Heights — a 12-storey, 120-unit luxury condominium tower in East Legon, valued at GH₵ 48 million. Several units were purchased by diaspora investors who never visited during construction, relying entirely on our reporting system for peace of mind.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__year">2025</div>
-        <div class="timeline-item__body">
-          <h4>Growing the Team</h4>
-          <p>With a growing pipeline of diaspora commissions across Greater Accra, Ashanti, and the Eastern Region, we expand our team to 50+ professionals — including dedicated Diaspora Liaison Officers who speak the language of our clients' concerns and communicate across time zones.</p>
-        </div>
-      </div>
+      <button class="scroll-btn scroll-btn--next" data-target="timeline-track" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+    <div class="scroll-dots" id="timeline-dots"></div>
   </div>
 </section>
 
 <!-- LEADERSHIP TEAM -->
-<section class="section" style="background:var(--white);">
+<section class="section scroll-section" style="background:var(--white);overflow:hidden;">
   <div class="container">
     <div class="section-header section-header--center reveal">
       <span class="section-eyebrow">Our People</span>
@@ -218,30 +230,40 @@
       <div class="section-header__divider" style="margin:18px auto;"></div>
       <p style="max-width:520px;margin:0 auto;color:var(--stone);">People who understand both the Ghanaian construction landscape and the unique trust needs of diaspora clients.</p>
     </div>
-    <div class="team-grid" style="margin-top:64px;">
-      <div class="team-card reveal">
-        <div class="team-card__img-wrap">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="CEO" loading="lazy" />
+    <div class="scroll-controls" style="margin-top:48px;">
+      <button class="scroll-btn scroll-btn--prev" data-target="team-track" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="scroll-track-wrap">
+        <div class="scroll-track" id="team-track">
+          <div class="team-card scroll-card team-card--scroll">
+            <div class="team-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="CEO" loading="lazy" />
+            </div>
+            <div class="team-card__name">Selasi Anyawoe</div>
+            <div class="team-card__role">Chief Executive Officer</div>
+          </div>
+          <div class="team-card scroll-card team-card--scroll">
+            <div class="team-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="COO" loading="lazy" />
+            </div>
+            <div class="team-card__name">Tracy Anyawoe</div>
+            <div class="team-card__role">Chief Operations Officer</div>
+          </div>
+          <div class="team-card scroll-card team-card--scroll">
+            <div class="team-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Head of Interior Design" loading="lazy" />
+            </div>
+            <div class="team-card__name">Eugenia Anyawoe</div>
+            <div class="team-card__role">Head of Interior Design</div>
+          </div>
         </div>
-        <div class="team-card__name">Selasi Anyawoe</div>
-        <div class="team-card__role">Chief Executive Officer</div>
       </div>
-      <div class="team-card reveal reveal-delay-1">
-        <div class="team-card__img-wrap">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="COO" loading="lazy" />
-        </div>
-        <div class="team-card__name">Tracy Anyawoe</div>
-        <div class="team-card__role">Chief Operations Officer</div>
-      </div>
-      <div class="team-card reveal reveal-delay-2">
-        <div class="team-card__img-wrap">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Head of Interior Design" loading="lazy" />
-        </div>
-        <div class="team-card__name">Eugenia Anyawoe</div>
-        <div class="team-card__role">Head of Interior Design</div>
-      </div>
-      <div class="team-card reveal reveal-delay-3"></div>
+      <button class="scroll-btn scroll-btn--next" data-target="team-track" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+    <div class="scroll-dots" id="team-dots"></div>
   </div>
 </section>
 

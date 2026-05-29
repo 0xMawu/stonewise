@@ -428,5 +428,84 @@
         });
       });
     }
-  
+
+    /* ---------- Horizontal Scroll Carousels ---------- */
+    function initScrollCarousel(trackId, dotsId) {
+      const track = document.getElementById(trackId);
+      const dotsEl = document.getElementById(dotsId);
+      if (!track) return;
+
+      const cards = Array.from(track.querySelectorAll('.scroll-card'));
+      const prevBtn = document.querySelector(`.scroll-btn--prev[data-target="${trackId}"]`);
+      const nextBtn = document.querySelector(`.scroll-btn--next[data-target="${trackId}"]`);
+
+      /* Build dot indicators */
+      if (dotsEl && cards.length > 1) {
+        cards.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'scroll-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Go to item ${i + 1}`);
+          dot.addEventListener('click', () => scrollToCard(i));
+          dotsEl.appendChild(dot);
+        });
+      }
+
+      function getDots() { return dotsEl ? Array.from(dotsEl.querySelectorAll('.scroll-dot')) : []; }
+
+      function getActiveIndex() {
+        const trackRect = track.getBoundingClientRect();
+        let best = 0, bestDist = Infinity;
+        cards.forEach((card, i) => {
+          const dist = Math.abs(card.getBoundingClientRect().left - trackRect.left);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        });
+        return best;
+      }
+
+      function updateState() {
+        const idx = getActiveIndex();
+        getDots().forEach((d, i) => d.classList.toggle('active', i === idx));
+        if (prevBtn) prevBtn.disabled = track.scrollLeft <= 4;
+        if (nextBtn) nextBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      }
+
+      function scrollToCard(i) {
+        const card = cards[i];
+        if (!card) return;
+        const offset = card.offsetLeft - track.offsetLeft;
+        track.scrollTo({ left: offset, behavior: 'smooth' });
+      }
+
+      prevBtn?.addEventListener('click', () => {
+        const idx = Math.max(0, getActiveIndex() - 1);
+        scrollToCard(idx);
+      });
+      nextBtn?.addEventListener('click', () => {
+        const idx = Math.min(cards.length - 1, getActiveIndex() + 1);
+        scrollToCard(idx);
+      });
+
+      track.addEventListener('scroll', updateState, { passive: true });
+
+      /* Drag-to-scroll */
+      let isDown = false, startX = 0, scrollStart = 0;
+      track.addEventListener('mousedown', e => {
+        isDown = true; startX = e.pageX - track.offsetLeft; scrollStart = track.scrollLeft;
+        track.style.scrollBehavior = 'auto';
+      });
+      track.addEventListener('mouseleave', () => { isDown = false; track.style.scrollBehavior = ''; });
+      track.addEventListener('mouseup',    () => { isDown = false; track.style.scrollBehavior = ''; });
+      track.addEventListener('mousemove',  e => {
+        if (!isDown) return;
+        e.preventDefault();
+        track.scrollLeft = scrollStart - (e.pageX - track.offsetLeft - startX);
+      });
+
+      updateState();
+    }
+
+    initScrollCarousel('values-track',   'values-dots');
+    initScrollCarousel('timeline-track', 'timeline-dots');
+    initScrollCarousel('team-track',     'team-dots');
+
   });
