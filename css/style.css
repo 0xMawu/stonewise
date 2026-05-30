@@ -273,7 +273,7 @@
    
    /* ── HERO ──────────────────────────────────────────────────── */
    .hero {
-     position: relative; min-height: 100vh;
+     position: relative; min-height: 50vh;
      display: flex; align-items: center; overflow: hidden;
    }
    .hero__bg {
@@ -408,22 +408,23 @@
    .projects__grid {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     gap: 32px;
+     gap: 0;
    }
    .project-card {
-     position: relative; overflow: hidden; cursor: pointer;
+     position: relative; overflow: hidden; cursor: pointer; display: block;
    }
    .project-card--tall { grid-row: span 2; }
    .project-card--wide { grid-column: span 2; }
-   
+
    .project-card__media {
-     min-height: 400px; overflow: hidden; position: relative;
+     position: relative; overflow: hidden;
+     aspect-ratio: 3 / 4;
    }
-   .project-card--tall .project-card__media { min-height: 100%; }
-   .project-card--wide .project-card__media { min-height: 420px; }
-   
+   .project-card--wide .project-card__media { aspect-ratio: 16 / 9; }
+
    .project-card__media img {
-     width: 100%; height: 100%; object-fit: cover;
+     position: absolute; inset: 0;
+     width: 100%; height: 100%; object-fit: cover; display: block;
      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
    }
    .project-card:hover .project-card__media img { transform: scale(1.06); }
@@ -662,7 +663,7 @@
    .all-projects__grid {
      display: grid; grid-template-columns: repeat(3,1fr); gap: 3px;
    }
-   .all-projects .project-card .project-card__media { min-height: 380px; }
+   .all-projects .project-card .project-card__media { aspect-ratio: 3 / 4; }
    .project-card[data-category] { transition: opacity 0.4s, transform 0.4s; }
    .project-card.hidden { opacity: 0; transform: scale(0.95); pointer-events: none; position: absolute; visibility: hidden; width: 0; height: 0; overflow: hidden; padding: 0; margin: 0; }
    
@@ -1092,9 +1093,9 @@
 
      /* Project cards — horizontal row */
      .projects__scroll-track .projects__grid {
-       display: flex !important;
-       flex-direction: row;
-       flex-wrap: nowrap;
+       /* display: flex !important; */
+       /* flex-direction: row;
+       flex-wrap: nowrap; */
        gap: 10px;
        width: max-content;
      }
@@ -1246,7 +1247,7 @@
 
   /* 2. Configure the window track to handle sideways touch/swipe scrolling */
   .projects__scroll-track {
-    display: block !important;
+    display:  flex !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x mandatory;
@@ -1262,22 +1263,173 @@
     display: none !important;
   }
 
-  /* 3. Re-arrange the vertical grid layout into a single row that doesn't wrap */
+  /* Projects grid — 2-column on mobile, no horizontal scroll */
   .projects__grid {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 20px !important;
-    width: max-content !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0 !important;
+    width: 100% !important;
     margin-top: 0 !important;
-    padding-right: 20px; /* Soft edge spacing at the end of the line */
   }
 
-  /* 4. Force individual cards to size up as uniform mobile slides */
   .project-card {
-    width: 300px !important;
-    max-width: 82vw !important;
-    scroll-snap-align: start;
-    flex-shrink: 0 !important; /* Prevents layout cards from squeezing smaller */
+    width: auto !important;
+    max-width: none !important;
+    flex-shrink: unset !important;
   }
+}
+
+
+/* SECTION
+.section{
+  padding: 80px 0;
+} */
+
+
+/* ── HOME PROJECTS CAROUSEL ─────────────────────────────────── */
+
+.home-projects { overflow: visible; }
+
+/* Header row: title left, arrows right */
+.home-projects__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.home-projects__header h2 { margin-top: 6px; }
+
+/* Arrow buttons */
+.home-projects__nav {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  padding-bottom: 8px;
+}
+.home-proj-btn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,169,110,0.35);
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--tr), border-color var(--tr);
+  flex-shrink: 0;
+}
+.home-proj-btn svg {
+  width: 18px; height: 18px;
+  stroke: var(--gold); fill: none; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.home-proj-btn:hover { background: rgba(200,169,110,0.12); border-color: var(--gold); }
+.home-proj-btn:disabled { opacity: 0.22; pointer-events: none; }
+
+/* Full-bleed scroll track wrapper */
+.home-projects__track-wrap {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, black 88%, transparent 100%);
+          mask-image:  linear-gradient(to right, black 88%, transparent 100%);
+}
+
+/* Scrollable track */
+.home-projects__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 max(20px, calc((100vw - 1280px) / 2)) 16px;
+  cursor: grab;
+  will-change: scroll-position;
+}
+.home-projects__track:active { cursor: grabbing; }
+.home-projects__track::-webkit-scrollbar { display: none; }
+
+/* Individual cards */
+.home-proj-card {
+  flex: 0 0 auto;
+  width: 340px;
+  scroll-snap-align: start;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .home-proj-card { width: 74vw; }
+}
+@media (max-width: 480px) {
+  .home-proj-card { width: 82vw; }
+}
+
+.home-proj-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 7 / 7;
+}
+.home-proj-card__media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.home-proj-card:hover .home-proj-card__media img { transform: scale(1.06); }
+
+.home-proj-card__overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.2) 55%, transparent 100%);
+  transition: background var(--tr);
+}
+.home-proj-card:hover .home-proj-card__overlay {
+  background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 65%, rgba(8,8,8,0.1) 100%);
+}
+.home-proj-card__info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  z-index: 2; padding: 20px 18px;
+}
+.home-proj-card__cat {
+  font-size: 0.64rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.home-proj-card__title {
+  font-family: var(--font-display); font-size: 1.55rem;
+  color: var(--white); margin-bottom: 14px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  line-height: 1.15;
+}
+.home-proj-card__link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: 0; transform: translateY(10px); transition: all var(--tr);
+}
+.home-proj-card__link svg {
+  width: 14px; height: 14px; stroke: currentColor; fill: none;
+  transition: transform var(--tr);
+}
+.home-proj-card:hover .home-proj-card__link { opacity: 1; transform: translateY(0); }
+.home-proj-card:hover .home-proj-card__link svg { transform: translateX(4px); }
+
+/* VIEW ALL footer row */
+.home-projects__footer {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.home-projects__footer::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(200,169,110,0.18);
+}
+.home-projects__view-all {
+  flex-shrink: 0;
+  
 }

@@ -335,13 +335,20 @@
 .filter-btn.active,
 .filter-btn:hover { border-color:var(--gold); color:var(--charcoal); background:rgba(200,169,110,0.08); }
 
-.all-projects__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-.all-projects .project-card .project-card__media { min-height:380px; }
+.projects__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+.projects .project-card .project-card__media { aspect-ratio: 3 / 4; }
 .project-card[data-category] { transition:opacity 0.4s, transform 0.4s; }
 .project-card.hidden { opacity:0; transform:scale(0.95); pointer-events:none; }
 
-@media (max-width:1024px) { .all-projects__grid { grid-template-columns:repeat(2,1fr); } }
-@media (max-width:600px)  { .all-projects__grid { grid-template-columns:1fr; } }
+@media (max-width:1024px) {
+  .projects__grid,
+  .all-projects__grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:600px)  {
+  .projects__grid,
+  .all-projects__grid { grid-template-columns:repeat(2,1fr); gap:0; }
+  .projects .project-card .project-card__media { aspect-ratio: 4 / 5; }
+}
 
 
 /* ── SERVICES PAGE ──────────────────────────────────────────── */

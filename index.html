@@ -7,13 +7,13 @@
   <meta name="description" content="Stonewise Construction — the trusted partner for Ghanaians abroad who want to build back home. Full transparency, real-time updates, and zero compromise on quality." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/pages.css" />
 </head>
 <body>
 
-<!-- Loading Screen -->
+  <!-- Loading Screen -->
 <div id="loader">
   <div class="loader__logo">Stonewise</div>
   <div class="loader__bar"></div>
@@ -23,35 +23,32 @@
 <!-- HEADER -->
 <header id="site-header">
   <div class="header__inner">
-    <nav class="header__nav-left" aria-label="Primary left navigation">
+    <nav class="header__nav-left">
       <a href="index.html" class="active">Home</a>
       <a href="projects.html">Projects</a>
       <a href="services.html">Services</a>
     </nav>
-    <a href="index.html" class="header__logo" aria-label="Stonewise Construction — Home">
-      <div class="header__logo-placeholder"></div>
-      <div></div>
+    <a href="index.html" class="header__logo">
+      <div class="header__logo-placeholder">
+        <svg viewBox="0 0 32 32"><path d="M4 28V8L16 4l12 4v20H4z" fill="none" stroke="#c8a96e" stroke-width="1.5"/><path d="M12 28v-8h8v8" fill="none" stroke="#c8a96e" stroke-width="1.5"/></svg>
+      </div>
+      <div><div class="header__logo-text">Stonewise</div><div class="header__logo-sub">Construction</div></div>
     </a>
-    <nav class="header__nav-right" aria-label="Primary right navigation">
+    <nav class="header__nav-right">
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <button class="header__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="header__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
 </header>
-<nav class="mobile-nav" aria-label="Mobile navigation">
-  <a href="index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="services.html">Services</a>
-  <a href="about.html">About</a>
-  <a href="faq.html">FAQ</a>
-  <a href="contact.html">Contact Us</a>
+<nav class="mobile-nav">
+  <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html">Services</a>
+  <a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact Us</a>
 </nav>
 <div class="mobile-nav__overlay"></div>
 
+<!-- PAGE HERO -->
 <!-- HERO -->
 <section class="hero" aria-label="Hero">
   <div class="hero__bg">
@@ -59,14 +56,14 @@
       src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80"
       alt="Stonewise Construction — premium build quality in Ghana"
       class="hero__bg-img"
-      width="1800" height="1012"
+      width="900" height="506"
       loading="eager"
       decoding="async"
     />
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content container">
-    <p class="hero__eyebrow">For Ghanaians Abroad, Building Back Home</p>
+    <!-- <p class="hero__eyebrow">For Ghanaians Abroad, Building Back Home</p> -->
     <h1 class="hero__title">
       Your Dream<br>
       <em>Home in Ghana,</em><br>
@@ -83,310 +80,159 @@
     <div class="hero__scroll-line"></div>
   </div>
 </section>
+<!-- <div style="height:var(--header-height)"></div> -->
 
-<!-- INTRO -->
-<section class="intro">
+<!-- PROJECTS SECTION — Homepage Horizontal Scroll Carousel -->
+<section class="section home-projects" style="background:var(--offwhite);padding-top:20px;padding-bottom:28px;">
   <div class="container">
-    <div class="intro__grid">
-      <div class="reveal reveal-delay-2">
-        
-        <div class="intro__stat-row">
-          <div class="intro__stat">
-            <h3><span data-counter="3" data-suffix="+">3+</span></h3>
-            <p>Years Serving the Diaspora</p>
-          </div>
-          <div class="intro__stat">
-            <h3><span data-counter="15" data-suffix="+">15+</span></h3>
-            <p>Projects Completed</p>
-          </div>
-          <div class="intro__stat">
-            <h3><span data-counter="98" data-suffix="%">98%</span></h3>
-            <p>Client Satisfaction</p>
+    <div class="home-projects__header reveal">
+      <div>
+        <span class="section-eyebrow">Our Portfolio</span>
+        <h2>Projects We've Built for Clients Abroad</h2>
+      </div>
+      <div class="home-projects__nav">
+        <button class="home-proj-btn" id="proj-prev" aria-label="Previous projects">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="home-proj-btn" id="proj-next" aria-label="Next projects">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-bleed scroll track -->
+  <div class="home-projects__track-wrap">
+    <div class="home-projects__track" id="home-proj-track">
+
+      <a href="projects/granite-heights.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Granite Heights" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Condominium</div>
+            <h3 class="home-proj-card__title">Granite Heights</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
           </div>
         </div>
+      </a>
 
-      </div>
+      <a href="projects/the-ridge-lounge.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="The Ridge Lounge" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Commercial Lounge</div>
+            <h3 class="home-proj-card__title">The Ridge Lounge</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/bayside-lodge.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Bayside Lodge" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Lodge</div>
+            <h3 class="home-proj-card__title">Bayside Lodge</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/meridian-complex.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Meridian Complex" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Commercial</div>
+            <h3 class="home-proj-card__title">Meridian Business Complex</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/amber-residences.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Amber Residences" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Residential</div>
+            <h3 class="home-proj-card__title">Amber Residences</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/lakeview-lodge.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=800&q=80" alt="Lakeview Lodge" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Lodge</div>
+            <h3 class="home-proj-card__title">Lakeview Lodge</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/skyline-condominiums.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?w=800&q=80" alt="Skyline Condominiums" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Condominium</div>
+            <h3 class="home-proj-card__title">Skyline Condominiums</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/heritage-lounge.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Heritage Lounge" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Lounge</div>
+            <h3 class="home-proj-card__title">Heritage Lounge &amp; Bar</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="projects/crossroads-infrastructure.html" class="home-proj-card">
+        <div class="home-proj-card__media">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Crossroads Infrastructure" loading="lazy"/>
+          <div class="home-proj-card__overlay"></div>
+          <div class="home-proj-card__info">
+            <div class="home-proj-card__cat">Infrastructure</div>
+            <h3 class="home-proj-card__title">Crossroads Highway</h3>
+            <span class="home-proj-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /.home-projects__track -->
+  </div><!-- /.home-projects__track-wrap -->
+
+  <!-- VIEW ALL button -->
+  <div class="container">
+    <div class="home-projects__footer reveal">
+      <a href="projects.html" class="btn btn--dark home-projects__view-all"><span>View All Projects</span></a>
     </div>
   </div>
 </section>
 
-<!-- FEATURED PROJECTS -->
-<section class="featured-projects">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-eyebrow">Our Portfolio</span>
-      <h2>Projects We've Built for Clients Abroad</h2>
-      <div class="section-header__divider"></div>
-    </div>
-    <div class="projects__scroll-track">
-      <div class="projects__grid">
-        <a href="projects/granite-heights.html" class="project-card project-card--tall" data-category="condominium">
-          <div class="project-card__media">
-            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=80" alt="Granite Heights Condominiums" loading="lazy"/>
-          </div>
-          <div class="project-card__overlay"></div>
-          <div class="project-card__info">
-            <div class="project-card__cat">Luxury Condominium</div>
-            <div class="project-card__name">Granite Heights</div>
-            <div class="project-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
-        </a>
-        <a href="projects/the-ridge-lounge.html" class="project-card" data-category="lounge">
-          <div class="project-card__media">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80" alt="The Ridge Lounge" loading="lazy"/>
-          </div>
-          <div class="project-card__overlay"></div>
-          <div class="project-card__info">
-            <div class="project-card__cat">Lounge &amp; Bar</div>
-            <div class="project-card__name">The Ridge Lounge</div>
-            <div class="project-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
-        </a>
-        <a href="projects/bayside-lodge.html" class="project-card" data-category="lodge">
-          <div class="project-card__media">
-            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=80" alt="Bayside Lodge" loading="lazy"/>
-          </div>
-          <div class="project-card__overlay"></div>
-          <div class="project-card__info">
-            <div class="project-card__cat">Boutique Lodge</div>
-            <div class="project-card__name">Bayside Lodge</div>
-            <div class="project-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
-        </a>
-        <a href="projects/meridian-complex.html" class="project-card project-card--wide" data-category="commercial">
-          <div class="project-card__media">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Meridian Commercial Complex" loading="lazy"/>
-          </div>
-          <div class="project-card__overlay"></div>
-          <div class="project-card__info">
-            <div class="project-card__cat">Commercial Complex</div>
-            <div class="project-card__name">Meridian Complex</div>
-            <div class="project-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
-        </a>
-        <a href="projects/palm-court-residences.html" class="project-card" data-category="residential">
-          <div class="project-card__media">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="Palm Court Residences" loading="lazy"/>
-          </div>
-          <div class="project-card__overlay"></div>
-          <div class="project-card__info">
-            <div class="project-card__cat">Residential</div>
-            <div class="project-card__name">Palm Court Residences</div>
-            <div class="project-card__link">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:56px;" class="reveal">
-      <a href="projects.html" class="btn btn--dark"><span>View All Projects</span></a>
-    </div>
-  </div>
-</section>
-<!-- SERVICES OVERVIEW -->
-<section class="services">
-  <div class="container">
-    <div class="section-header section-header--center reveal">
-      <span class="section-eyebrow">What We Build</span>
-      <h2 style="color:var(--cream)">What Can We Build for You?</h2>
-      <div class="section-header__divider" style="margin:18px auto;"></div>
-      <p style="max-width:540px;margin:0 auto;color:rgba(245,240,232,0.55);">From a modest family home in Kumasi to a luxury condominium tower in Accra — we manage the entire process so you don't have to.</p>
-    </div>
-    <div class="services__scroll-track">
-      <div class="services__grid">
-        <div class="service-card reveal">
-          <div class="service-card__number">01</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h4>Family Homes &amp; Residences</h4>
-          <p>Build the home you've been planning for years — designed to your taste, built to last, handed over ready to move in.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-card__number">02</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <h4>Commercial &amp; Rental Properties</h4>
-          <p>Offices, retail spaces, and rental complexes — investments that generate income in Ghana while you remain abroad.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-card__number">03</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          </div>
-          <h4>Condominiums &amp; Estates</h4>
-          <p>Luxury multi-unit developments with premium finishes — for investors building in Ghana's growing real estate market.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-card__number">04</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          </div>
-          <h4>Lodges &amp; Hospitality</h4>
-          <p>Tourism and hospitality properties across Ghana — a growing sector perfect for diaspora investment and passive income.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-card__number">05</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          </div>
-          <h4>Renovation &amp; Property Upgrades</h4>
-          <p>Have an existing property in Ghana that needs work? We renovate, refurbish, and restore — transforming old builds into modern assets.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-card__number">06</div>
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <h4>Remote Project Management</h4>
-          <p>Already have a design or contractor? We'll supervise the project on your behalf — quality checks, spend control, and weekly reporting.</p>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:56px;" class="reveal">
-      <a href="services.html" class="btn btn--gold"><span>Explore All Services</span></a>
-    </div>
-  </div>
-</section>
-
-
-<!-- HOW WE WORK FOR YOU (DIASPORA TRUST SECTION) -->
-<section class="why-us">
-  <div class="container">
-    <div class="why-us__grid">
-      <!-- <div class="reveal">
-        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Precision Construction Work" class="why-us__img" />
-      </div> -->
-      <div class="reveal reveal-delay-2">
-        <span class="section-eyebrow">Built for the Diaspora</span>
-        <h2>We Build It Like It's Ours — Because We Know It Matters to You</h2>
-        <div class="section-header__divider"></div>
-        <p>We understand that handing over your hard-earned savings to someone thousands of miles away requires enormous trust. That's why we've engineered every part of our process to eliminate fear and replace it with total confidence.</p>
-        
-        <!-- THE SCROLL-TRACK WRAPPER -->
-        <div class="why-us__scroll-track">
-          <div class="why-us__list">
-            
-            <div class="why-us__item">
-              <div class="why-us__icon">
-                <svg viewBox="0 0 24 24"><path d="M23 7a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7z"/><polyline points="16 21 16 19 8 19 8 21"/></svg>
-              </div>
-              <div class="why-us__item-content">
-                <h5>Weekly Live Video Updates</h5>
-                <p>See exactly what's happening on your site without leaving your home abroad. Real-time footage, transparent progress.</p>
-              </div>
-            </div>
-
-            <div class="why-us__item">
-              <div class="why-us__icon">
-                <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 11V7"/></svg>
-              </div>
-              <div class="why-us__item-content">
-                <h5>Milestone Payments</h5>
-                <p>Only pay for work that has been completed, verified, and signed off by independent quality assessors.</p>
-              </div>
-            </div>
-
-            <div class="why-us__item">
-              <div class="why-us__icon">
-                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              </div>
-              <div class="why-us__item-content">
-                <h5>Verified Land Ownership</h5>
-                <p>Full legal verification before a single brick is laid on-site, guarding you against dual ownership claims.</p>
-              </div>
-            </div>
-
-            <div class="why-us__item">
-              <div class="why-us__icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <div class="why-us__item-content">
-                <h5>Your Timezone Support</h5>
-                <p>Our project management teams communicate on your schedule, wherever you are in Europe, America, or Asia.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-eyebrow">Client Stories</span>
-      <h2>What Our Diaspora Clients Say</h2>
-      <div class="section-header__divider"></div>
-    </div>
-    <div class="testimonials__track reveal">
-      <div class="testimonials__slider">
-        <div class="testimonial-card">
-          <p class="testimonial-card__text">"I was terrified to build from the UK after hearing so many bad stories. Stonewise changed everything. Weekly videos, honest cost reports, and a finished house that exceeded what I imagined. I couldn't be prouder."</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">KA</div>
-            <div>
-              <div class="testimonial-card__name">Kwame Asante</div>
-              <div class="testimonial-card__role">Based in London, UK — Built in East Legon</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-card__text">"I hadn't been back to Ghana in three years when my house was being built. Stonewise made me feel like I was on-site every week. The transparency is unlike anything I'd experienced before."</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">AB</div>
-            <div>
-              <div class="testimonial-card__name">Abena Boateng</div>
-              <div class="testimonial-card__role">Based in Toronto, Canada — Built in Kumasi</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-card__text">"As someone investing from the US, finding a contractor I could trust in Ghana was my biggest challenge. Stonewise solved it. Milestone payments, photo reports, and a project delivered on time."</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">EO</div>
-            <div>
-              <div class="testimonial-card__name">Emmanuel Owusu</div>
-              <div class="testimonial-card__role">Based in Houston, USA — Built in Airport Residential</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-card__text">"My parents' retirement home was built entirely while I managed it remotely from Germany. Stonewise handled everything — land verification, permits, build, and finishing. Keys were handed to my parents on schedule."</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">SA</div>
-            <div>
-              <div class="testimonial-card__name">Sophia Agyemang</div>
-              <div class="testimonial-card__role">Based in Hamburg, Germany — Built in Tema</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonials__controls reveal">
-      <button class="slider-btn slider-btn--prev" aria-label="Previous testimonial">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="slider-btn slider-btn--next" aria-label="Next testimonial">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
+<!-- CTA -->
 <section class="cta-banner">
-  <div class="cta-banner__bg-text">Build</div>
+  <div class="cta-banner__bg-text">Project</div>
   <div class="container">
     <div class="cta-banner__content reveal">
-      <span class="section-eyebrow">Ready to Build Back Home?</span>
-      <h2>Let's Make Your Ghana Property a Reality</h2>
-      <p>Tell us about your vision — land, design, or just an idea. We'll guide you through everything and have a proposal ready within 48 hours.</p>
-      <a href="contact.html" class="btn btn--gold"><span>Start a Free Consultation</span></a>
+      <span class="section-eyebrow">Have a Project in Mind?</span>
+      <h2>Let's Build Together</h2>
+      <p>Contact our team to discuss your vision. We'll provide a comprehensive scope and quote within 48 hours.</p>
+      <a href="contact.html" class="btn btn--gold"><span>Start a Conversation</span></a>
     </div>
   </div>
 </section>
@@ -397,72 +243,29 @@
     <div class="footer__grid">
       <div class="footer__brand">
         <div class="footer__brand-logo">
-          <div class="footer__logo-circle">
-            <svg viewBox="0 0 32 32"><path d="M4 28V8L16 4l12 4v20H4z" fill="none" stroke="#c8a96e" stroke-width="1.5"/><path d="M12 28v-8h8v8" fill="none" stroke="#c8a96e" stroke-width="1.5"/></svg>
-          </div>
-          <div>
-            <div class="footer__brand-name">STONEWISE</div>
-            <div class="footer__brand-tagline">Construction</div>
-          </div>
+          <div class="footer__logo-circle"><svg viewBox="0 0 32 32"><path d="M4 28V8L16 4l12 4v20H4z" fill="none" stroke="#c8a96e" stroke-width="1.5"/><path d="M12 28v-8h8v8" fill="none" stroke="#c8a96e" stroke-width="1.5"/></svg></div>
+          <div><div class="footer__brand-name">STONEWISE</div><div class="footer__brand-tagline">Construction</div></div>
         </div>
-        <p>Ghana's trusted construction partner for the diaspora — building your dream property back home with full transparency and zero compromise.</p>
+        <p>Premium construction services delivered with precision, integrity, and craftsmanship that stands the test of time.</p>
         <div class="footer__social">
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
           <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--black)"/></svg></a>
         </div>
       </div>
-      <div class="footer__col">
-        <h6>Navigation</h6>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h6>What We Build</h6>
-        <ul>
-          <li><a href="services.html#residential">Family Homes</a></li>
-          <li><a href="services.html#commercial">Rental &amp; Commercial</a></li>
-          <li><a href="services.html#condominiums">Condominiums</a></li>
-          <li><a href="services.html#lodges">Lodges &amp; Hospitality</a></li>
-          <li><a href="services.html#renovation">Renovation</a></li>
-          <li><a href="services.html#management">Remote Project Management</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h6>Stay in the Loop</h6>
-        <p style="font-size:0.85rem;color:rgba(245,240,232,0.45);margin-bottom:20px;">Get build tips, Ghana property insights, and diaspora success stories — delivered to your inbox.</p>
-        <form id="newsletter-form" novalidate>
-          <div class="footer__newsletter">
-            <input type="email" placeholder="Your email address" required aria-label="Email address" />
-            <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;padding:12px 0;"><span>Subscribe</span></button>
-          </div>
-        </form>
-      </div>
+      <div class="footer__col"><h6>Navigation</h6><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="projects.html">Projects</a></li><li><a href="services.html">Services</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer__col"><h6>Our Services</h6><ul><li><a href="services.html#residential">Residential</a></li><li><a href="services.html#commercial">Commercial</a></li><li><a href="services.html#condominiums">Condominiums</a></li><li><a href="services.html#renovation">Renovation</a></li><li><a href="services.html#infrastructure">Infrastructure</a></li></ul></div>
+      <div class="footer__col"><h6>Stay Updated</h6><p style="font-size:0.85rem;color:rgba(245,240,232,0.5);margin-bottom:20px;">Subscribe for updates and news.</p><form id="newsletter-form"><div class="footer__newsletter"><input type="email" placeholder="Your email" required /><button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;padding:12px 0;"><span>Subscribe</span></button></div></form></div>
     </div>
     <div class="footer__bottom">
       <p>&copy; 2026 0xMawu. All rights reserved.</p>
-      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
     </div>
   </div>
 </footer>
 
-<button id="back-to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
-<div id="lightbox" class="lightbox" role="dialog" aria-label="Image viewer">
-  <button id="lightbox-close" class="lightbox__close" aria-label="Close">&times;</button>
-  <button id="lightbox-prev" class="lightbox__nav lightbox__prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <img id="lightbox-img" class="lightbox__img" src="" alt="Gallery image" />
-  <button id="lightbox-next" class="lightbox__nav lightbox__next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
-</div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
+<div id="lightbox" class="lightbox"><button id="lightbox-close" class="lightbox__close">&times;</button><button id="lightbox-prev" class="lightbox__nav lightbox__prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><img id="lightbox-img" class="lightbox__img" src="" alt=""/><button id="lightbox-next" class="lightbox__nav lightbox__next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button></div>
 
 <script src="js/main.js"></script>
 </body>
