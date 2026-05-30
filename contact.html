@@ -154,7 +154,7 @@
         <span class="section-eyebrow">Reach Us From Anywhere</span>
         <h2 style="margin-bottom:40px;">Let's Talk About Your Property in Ghana</h2>
 
-        <div class="contact-info__item">
+        <!-- <div class="contact-info__item">
           <div class="contact-info__icon">
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
@@ -162,7 +162,7 @@
             <div class="contact-info__label">Head Office — Accra, Ghana</div>
             <div class="contact-info__value">24 Liberation Road<br>Airport Residential Area<br>Accra, Ghana</div>
           </div>
-        </div>
+        </div> -->
 
         <div class="contact-info__item">
           <div class="contact-info__icon">
@@ -216,40 +216,51 @@
 </section>
 
 <!-- HOW IT STARTS -->
-<section class="section" style="background:var(--charcoal);">
+<section class="section scroll-section" style="background:var(--charcoal);overflow:hidden;">
   <div class="container">
     <div class="section-header section-header--center reveal">
       <span class="section-eyebrow">What Happens Next</span>
       <h2 style="color:var(--cream)">From Your First Message to Groundbreaking</h2>
       <div class="section-header__divider" style="margin:18px auto;"></div>
     </div>
-    <div class="process-grid reveal" style="margin-top:64px;">
-      <div class="process-step">
-        <div class="process-step__num">01</div>
-        <h5>You Send an Enquiry</h5>
-        <p>Fill in the form or email us. No commitment required — just tell us what you're thinking.</p>
+    <div class="scroll-controls" style="margin-top:64px;">
+      <button class="scroll-btn scroll-btn--prev" data-target="process-track" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="scroll-track-wrap">
+        <div class="scroll-track" id="process-track">
+          <div class="process-scroll-card scroll-card">
+            <div class="process-scroll-card__num">01</div>
+            <h5>You Send an Enquiry</h5>
+            <p>Fill in the form or email us. No commitment required — just tell us what you're thinking.</p>
+          </div>
+          <div class="process-scroll-card scroll-card">
+            <div class="process-scroll-card__num">02</div>
+            <h5>We Schedule a Video Call</h5>
+            <p>A Diaspora Liaison Officer arranges a call at a time that works in your timezone — no Ghana office hours required.</p>
+          </div>
+          <div class="process-scroll-card scroll-card">
+            <div class="process-scroll-card__num">03</div>
+            <h5>We Assess Your Project</h5>
+            <p>We review your land, design, and goals — and prepare an honest, itemised scope and cost estimate.</p>
+          </div>
+          <div class="process-scroll-card scroll-card">
+            <div class="process-scroll-card__num">04</div>
+            <h5>Contracts &amp; Milestone Plan</h5>
+            <p>We sign a detailed contract electronically. Your payment milestones and reporting schedule are agreed upfront.</p>
+          </div>
+          <div class="process-scroll-card scroll-card">
+            <div class="process-scroll-card__num">05</div>
+            <h5>We Build — You Watch</h5>
+            <p>Weekly reports, video calls, and WhatsApp updates keep you close to your build from anywhere in the world.</p>
+          </div>
+        </div>
       </div>
-      <div class="process-step">
-        <div class="process-step__num">02</div>
-        <h5>We Schedule a Video Call</h5>
-        <p>A Diaspora Liaison Officer arranges a call at a time that works in your timezone — no Ghana office hours required.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-step__num">03</div>
-        <h5>We Assess Your Project</h5>
-        <p>We review your land, design, and goals — and prepare an honest, itemised scope and cost estimate.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-step__num">04</div>
-        <h5>Contracts &amp; Milestone Plan</h5>
-        <p>We sign a detailed contract electronically. Your payment milestones and reporting schedule are agreed upfront.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-step__num">05</div>
-        <h5>We Build — You Watch</h5>
-        <p>Weekly reports, video calls, and WhatsApp updates keep you close to your build from anywhere in the world.</p>
-      </div>
+      <button class="scroll-btn scroll-btn--next" data-target="process-track" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+    <div class="scroll-dots" id="process-dots"></div>
   </div>
 </section>
 

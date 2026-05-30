@@ -507,5 +507,6 @@
     initScrollCarousel('values-track',   'values-dots');
     initScrollCarousel('timeline-track', 'timeline-dots');
     initScrollCarousel('team-track',     'team-dots');
+    initScrollCarousel('process-track',  'process-dots');
 
   });

@@ -415,3 +415,48 @@
 }
 .process-step h5 { font-family:var(--font-display); font-size:1.1rem; color:var(--cream); margin-bottom:8px; }
 .process-step p  { font-size:0.91rem; color:var(--stone); line-height:1.6; }
+
+/* ── PROCESS CARDS (horizontal scroll — What Happens Next) ───── */
+
+.process-scroll-card {
+  width: 300px;
+  padding: 44px 36px;
+  border: 1px solid rgba(200,169,110,0.18);
+  text-align: center;
+  position: relative;
+  transition: border-color var(--transition);
+}
+.process-scroll-card:hover { border-color: var(--gold); }
+
+.process-scroll-card__num {
+  width: 72px; height: 72px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.2rem; color: var(--gold);
+  background: var(--charcoal);
+  position: relative; z-index: 1;
+}
+.process-scroll-card h5 {
+  font-family: var(--font-display); font-size: 1.2rem;
+  color: var(--cream); margin-bottom: 12px;
+}
+.process-scroll-card p { font-size: 0.91rem; color: rgba(245,240,232,0.5); line-height: 1.7; }
+
+/* connecting line between cards */
+.process-scroll-card + .process-scroll-card::before {
+  content: '';
+  position: absolute;
+  top: 79px; /* centre of the number circle */
+  left: -24px; /* half the track gap */
+  width: 24px; height: 1px;
+  background: rgba(200,169,110,0.25);
+}
+
+.scroll-dots {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) { .process-scroll-card { width: 260px; } }
+@media (max-width: 480px) { .process-scroll-card { width: calc(100vw - 120px); } }
