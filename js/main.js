@@ -7,7 +7,13 @@
     /* ---------- Loading Screen ---------- */
     const loader = document.getElementById('loader');
     if (loader) {
-      setTimeout(() => loader.classList.add('done'), 1600);
+      const hideLoader = () => loader.classList.add('done');
+      if (document.readyState === 'complete') {
+        setTimeout(hideLoader, 300);
+      } else {
+        window.addEventListener('load', () => setTimeout(hideLoader, 300), { once: true });
+        setTimeout(hideLoader, 800); // safety fallback
+      }
     }
   
     /* ---------- Header Scroll Effect ---------- */
