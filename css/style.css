@@ -319,10 +319,10 @@
    }
    .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
    .hero__scroll {
-     position: absolute; bottom: 5px; left: 50%;
+     position: absolute; bottom: 1px; left: 50%;
      transform: translateX(-50%); z-index: 2;
      display: flex; flex-direction: column;
-     align-items: center; gap: 10px;
+     align-items: center; gap: 8px;
    }
    .hero__scroll span {
      font-size: 0.66rem; letter-spacing: 0.25em;
