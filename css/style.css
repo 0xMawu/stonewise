@@ -308,7 +308,7 @@
      content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
    }
    .hero__title {
-     font-size: clamp(3.5rem, 9vw, 7.5rem);
+     font-size: clamp(2.5rem, 7.5vw, 5.5rem);
      color: var(--white); font-weight: 300;
      line-height: 0.95; margin-bottom: 28px; max-width: 700px;
    }
@@ -1431,5 +1431,5 @@
 }
 .home-projects__view-all {
   flex-shrink: 0;
-  
+
 }
