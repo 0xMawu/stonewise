@@ -416,14 +416,28 @@
     })();
 
     /* ---------- Project Filter (projects.html) ---------- */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projCards  = document.querySelectorAll('.project-card[data-category]');
+    const filterBtns   = document.querySelectorAll('.filter-btn');
+    const projCards    = document.querySelectorAll('.project-card[data-category]');
+    const projGrid     = document.getElementById('projects-grid');
+    const projEmpty    = document.getElementById('projects-empty-state');
+
     if (filterBtns.length) {
+      // Hide all cards and grid on load; show empty state
+      projCards.forEach(card => card.classList.add('hidden'));
+      if (projGrid)  projGrid.classList.add('grid--hidden');
+      if (projEmpty) projEmpty.classList.add('visible');
+
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           filterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
+
           const cat = btn.dataset.filter;
+
+          // Hide empty state, show grid
+          if (projEmpty) projEmpty.classList.remove('visible');
+          if (projGrid)  projGrid.classList.remove('grid--hidden');
+
           projCards.forEach(card => {
             if (cat === 'all' || card.dataset.category === cat) {
               card.classList.remove('hidden');
