@@ -308,7 +308,7 @@
      content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
    }
    .hero__title {
-     font-size: clamp(2.5rem, 7.5vw, 5.5rem);
+     font-size: clamp(3.5rem, 9vw, 8.5rem);
      color: var(--white); font-weight: 300;
      line-height: 0.95; margin-bottom: 28px; max-width: 700px;
    }
@@ -319,7 +319,7 @@
    }
    .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
    .hero__scroll {
-     position: absolute; bottom: 40px; left: 50%;
+     position: absolute; bottom: 5px; left: 50%;
      transform: translateX(-50%); z-index: 2;
      display: flex; flex-direction: column;
      align-items: center; gap: 10px;
@@ -1161,6 +1161,17 @@
    ========================================================================== */
 
    @media (max-width: 768px) {
+
+    .hero__title {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: var(--white); font-weight: 300;
+      line-height: 0.95; margin-bottom: 28px; max-width: 700px;
+    }
+    .hero__title em { font-style: italic; color: var(--gold-light); }
+    .hero__subtitle {
+      font-size: 1rem; color: rgba(245,240,232,0.72);
+      max-width: 480px; line-height: 1.75; margin-bottom: 44px;
+    }
   
     /* 1. Prevent the grid parent from compressing layouts */
     .why-us__grid { 
